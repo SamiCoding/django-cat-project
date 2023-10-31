@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/postings/posting_detail.css' %}">
+{% endblock %}
+
+{% block body %}
+  <h1>작성 글 보기</h1>
+
+  <div class="posting">
+    <table class="posting__detail">
+      <tr>
+        <td class="posting__detail__title">{{posting.title}}</td>
+      </tr>
+      <tr>
+        <td class="posting__detail__date">
+          <span class="author">작성자: {{posting.author.username}}</span>
+          <span class="division">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+          <span class="date">작성일 : {{posting.date|date:'Y-m-d A f'}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="posting__detail__content">
+          <div class="content">
+            <span class="content__space">{{posting.content|linebreaksbr}}</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="posting__detail__function transparent">
+          <div>
+            {% if posting.author.username == user.username %}
+              <a class="button" href="{% url 'postings:posting_update' posting.id %}">수정</a>
+              <form action="{% url 'postings:posting_delete' posting.id %}" method="post" onsubmit="return contentDelete()">
+                {% csrf_token %}
+                <input class="button" type="submit" value="삭제">
+              </form>
+            {% endif %}
+            <a class="button" href="{% url 'postings:posting_list' %}">글 목록</a>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <table class="posting__comment">
+      <tr>
+        <th>댓글 목록</th>
+      </tr>
+      {% if user.is_authenticated %}
+        <tr>
+          <td class="posting__comment__create">
+            <form action="" method="post">
+              {% csrf_token %}
+              <div>
+                {{comment_form.as_div}}
+                <input class="button" type="submit" value="작성">
+              </div>
+            </form>
+          </td>
+        </tr>
+      {% endif %}
+      {% for comment in comments %}
+        <tr>
+          <td class="posting__comment__content">
+            <div>
+              <span class="content__space">{{comment.content|linebreaksbr}}</span>
+              <div class="posting__comment__delete">
+                {% if comment.author.username == user.username %}
+                  <form action="{% url 'postings:comment_delete' posting_id=posting.id comment_id=comment.id %}" method="post" onsubmit="return contentDelete()">
+                    {% csrf_token %}
+                    <input type="submit" value="x">
+                  </form>
+                {% endif %}
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="posting__comment__date">
+            <span class="author">{{comment.author.username}}</span>
+            <span class="division">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+            <span class="date">{{comment.date|date:'Y-m-d A f'}}</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <hr class="posting__comment__line">
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td class="posting__comment__content">
+            댓글이 아직 작성되지 않았습니다.
+          </td>
+        </tr>
+        <tr>
+          <td class="posting__comment__date"></td>
+        </tr>
+        <tr>
+          <td>
+            <hr class="posting__comment__line">
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <script>
+    const contents = document.getElementsByClassName("content__space")
+    
+    for (let i=0; i<contents.length; i++) {
+      contents[i].innerHTML = contents[i].innerHTML.replace(/ /g, "&nbsp;");
+    }
+
+    function contentDelete() {
+      const result = confirm("삭제하시겠습니까?");
+      return result;
+    }
+  </script>
+{% endblock %}
