@@ -9,7 +9,10 @@ def signup(request):
             form.save()
             return redirect('accounts:login')
     else:
-        form = CustomUserCreationForm()
+        if request.user.is_authenticated:
+            return redirect('postings:index')
+        else:
+            form = CustomUserCreationForm()
     context = {
         'type': '회원가입',
         'form': form,
@@ -23,7 +26,10 @@ def login(request):
             auth_login(request, form.get_user())
             return redirect('postings:index')
     else:
-        form = CustomAuthenticationForm()
+        if request.user.is_authenticated:
+            return redirect('postings:index')
+        else:
+            form = CustomAuthenticationForm()
     context = {
         'type': '로그인',
         'form': form,
