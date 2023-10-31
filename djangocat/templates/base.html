@@ -3,13 +3,124 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Django Cat</title>
+  <link rel="icon" href="{% static 'images/favicon-96x96.png' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <script src="https://kit.fontawesome.com/a1e1be19c8.js" crossorigin="anonymous"></script>
   {% block head %}
   {% endblock %}
 </head>
 <body>
-  {% block body %}
-  {% endblock %}
+  <div class="pc">
+    <div class="navbar">
+      <div class="navbar__page">
+        <span>
+          <a href="{% url 'postings:index' %}">
+            <img class="navbar__logo" src="{% static 'images/jgcat.jpg' %}" alt="jgcat">
+          </a>
+        </span>
+        <span>
+          <a href="{% url 'postings:posting_list' %}">글목록</a>
+        </span>
+        <span>
+          <a href="{% url 'postings:posting_create' %}">글쓰기</a>
+        </span>
+        <span>
+          <a href="{% url 'games:game_list' %}">게임목록</a>
+        </span>
+      </div>
+      <div class="navbar__account">
+        {% if user.is_authenticated %}
+        <span>
+          {{user.username}}님 안녕하세요.
+        </span>
+        <span>
+          <a href="{% url 'accounts:logout' %}" onclick="return userLogout()">로그아웃</a>
+        </span>
+        {% else %}
+          <span>
+            <a href="{% url 'accounts:login' %}">로그인</a>
+          </span>
+          <span>
+            <a href="{% url 'accounts:signup' %}">회원가입</a>
+          </span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="mobile">
+    <div class="navbar">
+      <div class="navbar__page">
+        <span>
+          <a href="{% url 'postings:index' %}">
+            <img class="navbar__logo" src="{% static 'images/jgcat.jpg' %}" alt="jgcat">
+          </a>
+        </span>
+      </div>
+      <div class="navbar__menu" onclick="openMenu()">
+        <span id="menu-icon">
+          <i class="fa-solid fa-bars fa-2x"></i>
+        </span>
+      </div>
+    </div>
+    <div id="navbar-hidden">
+      <div class="navbar-side">
+        {% if not user.is_authenticated%}
+        <span>
+          <a href="{% url 'accounts:signup' %}">회원가입</a>
+        </span>
+        <hr class="navbar__line">
+        <span>
+          <a href="{% url 'accounts:login' %}">로그인</a>
+        </span>
+        <hr class="navbar__line">
+        {% endif %}
+        <span>
+          <a href="{% url 'postings:posting_list' %}">글목록</a>
+        </span>
+        <hr class="navbar__line">
+        <span>
+          <a href="{% url 'games:game_list' %}">게임목록</a>
+        </span>
+        {% if user.is_authenticated %}
+        <hr class="navbar__line">
+        <span>
+          <a href="{% url 'accounts:logout' %}" onclick="return userLogout()">로그아웃</a>
+        </span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    {% block body %}
+    {% endblock %}
+  </div>
+
+  <script>
+    function userLogout() {
+      const result = confirm("로그아웃 하시겠습니까?");
+      return result;
+    }
+
+    let open_status = 0;
+    function openMenu() {
+      const menu_icon = document.getElementById("menu-icon");
+      const navbar_hidden = document.getElementById("navbar-hidden");
+      if (open_status == 0) {
+        open_status = 1;
+        menu_icon.innerHTML = '<i class="fa-solid fa-xmark fa-2x"></i>';
+        navbar_hidden.setAttribute("style", "display: block;");
+      }
+      else {
+        open_status = 0;
+        menu_icon.innerHTML = '<i class="fa-solid fa-bars fa-2x"></i>';
+        navbar_hidden.setAttribute("style", "display: none;");
+      }
+    }
+  </script>
 </body>
 </html>
