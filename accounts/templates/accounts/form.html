@@ -11,7 +11,9 @@
     {% csrf_token %}
     {{form.as_p}}
     {% if type == '로그인' %}
-      <a class="button signup" href="{% url 'accounts:signup' %}">회원가입</a>
+      <a class="button transparent" href="{% url 'accounts:signup' %}">회원가입</a>
+    {% elif type == '회원가입' %}
+      <a class="button transparent" href="{% url 'accounts:login' %}">로그인</a>
     {% endif %}
     <input class="button" type="submit" value="{{type}}">
   </form>
