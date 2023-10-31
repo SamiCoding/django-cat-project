@@ -20,6 +20,9 @@ $ python manage.py collectstatic --no-input
 # 마이그레이션 변경
 $ python manage.py migrate
 
+# staticfiles 생성
+$ python manage.py collectstatic
+
 # 프로젝트 실행
 $ python manage.py runserver
 ```
@@ -67,6 +70,9 @@ $ python manage.py makemigrations
 
 # 마이그레이션 변경
 $ python manage.py migrate
+
+# staticfiles 생성
+$ python manage.py collectstatic
 
 # 프로젝트 실행
 $ python manage.py runserver
