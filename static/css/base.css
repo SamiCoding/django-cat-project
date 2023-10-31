@@ -1,0 +1,138 @@
+.pc {
+  display: block;
+}
+
+.mobile {
+  display: none;
+  position: fixed;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  justify-content: space-between;
+  width: 88vw;
+  height: 4rem;
+  padding: 5px 6vw;
+  background-color: MediumTurquoise;
+}
+
+.navbar span {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.navbar a {
+  padding: 3px 6px;
+  color: black;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  padding: 3px 6px;
+  border-radius: 10px;
+  background-color: PaleTurquoise;
+}
+
+.navbar__logo {
+  display:flex;
+  width: 60px;
+  margin: 5px;
+}
+
+.navbar__page {
+  display: flex;
+}
+
+.navbar__account {
+  display: flex;
+}
+
+@keyframes open {
+  from {
+    transform: translate(0, -100px);
+  }
+
+  to {
+    transform: translate(0, 0px);
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar {
+    width: 94vw;
+    padding: 5px 3vw;
+  }
+}
+
+@media (max-width: 767px), (max-height: 412px) {
+  .pc {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+    left: 0px;
+    top: 0px;
+  }
+
+  .navbar {
+    width: 100vw;
+    padding: 5px 0;
+  }
+
+  .navbar__menu {
+    margin: auto 4px;
+    padding: 6px 2px;
+    color: Teal;
+    cursor: pointer;
+  }
+
+  #navbar-hidden {
+    display: none;
+  }
+
+  .navbar-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+    z-index: 0;
+    padding: 10px 0;
+    border-top: 2px solid DarkCyan;
+    background-color: LightSeaGreen;
+    animation: open 0.1s linear forwards;
+  }
+
+  .navbar-side span {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+  }
+
+  .navbar-side a {
+    padding: 3px 6px;
+    color: black;
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+
+  .navbar-side a:hover {
+    padding: 3px 6px;
+    border-radius: 10px;
+    background-color: MediumTurquoise;
+  }
+
+  .navbar__line {
+    width: 92%;
+    height: 2px;
+    margin: 5px 8px;
+    border: 0;
+    background-image: linear-gradient(to right, transparent, DarkCyan);
+  }
+}

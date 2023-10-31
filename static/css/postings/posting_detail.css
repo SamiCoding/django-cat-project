@@ -1,0 +1,165 @@
+.division {
+  color: DarkGray;
+}
+
+.content {
+  display: flex;
+  justify-content: left;
+  min-height: 20vh;
+  padding: 10px 5px;
+}
+
+.button {
+  display: inline-block;
+  margin: 0 2px;
+  padding: 3px 10px;
+  border: 1px solid;
+  border-radius: 10px;
+  background-color: Khaki;
+  color: SaddleBrown;
+  text-decoration: none;
+}
+
+textarea {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 5px;
+  font-family: 'GangwonEdu_OTFBoldA';
+  font-size: 1rem;
+  resize: vertical;
+}
+
+input[type=submit] {
+  font-family: 'GangwonEdu_OTFBoldA';
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.posting__detail {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.posting__detail td {
+  padding: 10px;
+  border-bottom: 1.5px solid;
+}
+
+.posting__detail td.transparent {
+  border-color: transparent;
+}
+
+.posting__detail__title {
+  font-size: 1.5rem;
+  word-wrap: break-word;
+}
+
+.posting__detail__function {
+  width: 7rem;
+  white-space: nowrap;
+}
+
+.posting__detail__function > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  margin-top: 10px;
+}
+
+.posting__comment {
+  width: 100%;
+  margin-top: 30px;
+  background-color: PaleGoldenrod;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.posting__comment th {
+  padding: 20px 20px 10px;
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+.posting__comment__create {
+  padding: 0 20px;
+  text-align: left;
+}
+
+.posting__comment__create div {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.posting__comment__create input[type=text] {
+  width: 100%;
+  height: 20px;
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.posting__comment__content {
+  padding: 15px 30px 0px;
+  text-align: left;
+}
+
+.posting__comment__content > div {
+  display: flex;
+  justify-content: left;
+  width: 100%;
+}
+
+.content__space {
+  display: inline-block;
+  width: 90%;
+  word-wrap: break-word;
+}
+
+.posting__comment__delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  text-align: center;
+}
+
+.posting__comment__delete input[type=submit] {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.posting__comment__date {
+  padding: 5px 30px 0px;
+  color: Peru;
+  font-size: 0.8rem;
+}
+
+.posting__comment__line {
+  margin: 10px 20px 5px;
+  border: 0.5px solid SaddleBrown;
+}
+
+.errorlist {
+  display: none;
+}
+
+@media (max-width: 767px), (max-height: 412px) {
+  .author {
+    display: block;
+  }
+
+  .division {
+    display: none;
+  }
+
+  .date {
+    display: block;
+    margin-top: 5px;
+  }
+}

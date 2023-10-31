@@ -1,0 +1,57 @@
+img {
+  width: 15rem;
+  border-radius: 10px;
+}
+
+.adventure {
+  text-align: center;
+}
+
+.weapon-info {
+  display: inline-block;
+  margin: 10px 0;
+  font-size: 0.8rem;
+}
+
+#inventory {
+  background-color: LightPink;
+  color: IndianRed;
+  cursor: default;
+}
+
+#inventory__hint {
+  display: none;
+  position: absolute;
+  padding: 5px 10px;
+  border: 1px solid black;
+  background-color: white;
+}
+
+#weapon__power {
+  display: inline-block;
+  position: relative;
+}
+
+#original {
+  color: black;
+}
+
+#additional {
+  color: IndianRed;
+}
+
+#weapon__power__hint {
+  display: none;
+  position: absolute;
+  left: -1rem;
+  top: 1rem;
+  width: 7rem;
+  padding: 10px;
+  border: 1px solid black;
+  background-color: white;
+  text-align: center;
+}
+
+.seperate {
+  display: block;
+}
