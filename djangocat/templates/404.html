@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/404.css' %}">
+{% endblock %}
+
+{% block body %}
+  <h1>존재하지 않는 페이지입니다.</h1>
+  <p>
+    <a href="javascript:history.back()">이전 화면으로 돌아가기</a>
+  </p>
+  <p>
+    <a href="{% url 'postings:index' %}">메인 화면으로 돌아가기</a>
+  </p>
+{% endblock %}
