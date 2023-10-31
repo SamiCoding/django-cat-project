@@ -81,6 +81,12 @@
         <span>
           <a href="{% url 'postings:posting_list' %}">글목록</a>
         </span>
+        {% if user.is_authenticated %}
+        <hr class="navbar__line">
+        <span>
+          <a href="{% url 'postings:posting_create' %}">글쓰기</a>
+        </span>
+        {% endif %}
         <hr class="navbar__line">
         <span>
           <a href="{% url 'games:game_list' %}">게임목록</a>
