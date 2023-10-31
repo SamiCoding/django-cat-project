@@ -1,0 +1,84 @@
+<hr>
+<p>{{character.nickname}}님의 보유 현황</p>
+<p>
+  <ul>
+    <li>
+      <p>
+        보유 무기 : <span id="weapon__name">{{weapon_name}}.LV{{weapon_level}}</span>&nbsp;
+        {% if weapon_power == original_power %}
+          <span id="weapon__power">
+            (공격력 : <span id="original">+{{weapon_power}}</span>)
+            <span id="weapon__power__hint">
+              무기 공격력({{original_power}})
+            </span>
+          </span>
+        {% else %}
+          <span id="weapon__power">
+            (공격력 : <span id="additional">+{{weapon_power}}</span>)
+            <span id="weapon__power__hint">
+              <span class="seperate">무기 공격력({{original_power}})</span>
+              <span class="seperate"> + </span>
+              <span class="seperate">아이템 공격력({{additional_power}})</span>
+            </span>
+          </span>
+        {% endif %}
+      </p>
+    </li>
+    <li><p>보유 코인 : {{character.coin}}코인</p></li>
+  </ul>
+  <p>
+    <button id="inventory">
+      인벤토리
+      <div id="inventory__hint">
+        {% for item in inventory %}
+          <p>{{item.default_lucky_item.name}}.LV{{item.level}}&nbsp;(공격력 : {{item.power}})</p>
+        {% empty %}
+          <p>보유한 아이템이 없습니다.</p>
+        {% endfor %}
+      </div>
+    </button>
+  </p>
+</p>
+
+<script>
+  const weapon_power = document.getElementById("weapon__power");
+
+  weapon_power.addEventListener("mouseenter", (event) => {
+    const hint = document.getElementById("weapon__power__hint");
+    hint.setAttribute("style", "display: inline;");
+  })
+  weapon_power.addEventListener("mouseleave", (event) => {
+    const hint = document.getElementById("weapon__power__hint");
+    hint.setAttribute("style", "display: none;");
+  })
+
+  weapon_power.addEventListener("touchstart", (event) => {
+    const hint = document.getElementById("weapon__power__hint");
+    hint.setAttribute("style", "display: inline;");
+  })
+  weapon_power.addEventListener("touchend", (event) => {
+    const hint = document.getElementById("weapon__power__hint");
+    hint.setAttribute("style", "display: none;");
+  })
+
+  const inventory = document.getElementById("inventory");
+
+  inventory.addEventListener("mouseenter", (event) => {
+    const hint = document.getElementById("inventory__hint");
+    hint.setAttribute("style", "display: block;");
+  })
+  inventory.addEventListener("mouseleave", (event) => {
+    const hint = document.getElementById("inventory__hint");
+    hint.setAttribute("style", "display: none;");
+  })
+
+  inventory.addEventListener("touchstart", (event) => {
+    const hint = document.getElementById("inventory__hint");
+    hint.setAttribute("style", "display: block;");
+  })
+  inventory.addEventListener("touchend", (event) => {
+    const hint = document.getElementById("inventory__hint");
+    hint.setAttribute("style", "display: none;");
+  })
+</script>
+<hr>

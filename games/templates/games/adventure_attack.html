@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/games/game_form.css' %}">
+  <link rel="stylesheet" href="{% static 'css/games/game_adventure.css' %}">
+  {% endblock %}
+
+{% block body %}
+  <div class="adventure">
+    <h1>모험을 떠났습니다.</h1>
+    <p>당신은 '{{random_enemy.name}}'을(를) 만났습니다.</p>
+
+    <p>
+      <img src="{% static 'images/cat_adventure_surprise.png' %}" alt="cat_adventure_surprise">
+    </p>
+    
+    <p>
+      <form action="{% url 'games:adventure_attack_result' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" name="random-enemy" value="{{random_enemy.id}}">공격하기</button>
+      </form>
+    </p>
+  
+    <p>
+      <button onclick="goBack()">도망치기</button>
+    </p>
+  </div>
+
+  <script>
+    function goBack() {
+      const url = "{% url 'games:adventure_home' %}";
+      location.replace(url);
+    }
+  </script>
+{% endblock %}

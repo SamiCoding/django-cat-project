@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/games/game_form.css' %}">
+  <link rel="stylesheet" href="{% static 'css/games/game_adventure.css' %}">
+  {% endblock %}
+
+{% block body %}
+  <h1>무기 강화</h1>
+
+  {% include 'games/character_goods.html' %}
+
+  <p>무기 강화에 {{result}}하였습니다.</p>
+  {% if result == '성공' %}
+    <p>무기의 레벨이 {{weapon_level}}(으)로 올라갑니다.</p>
+    <p>무기의 공격력이 {{original_power}}(으)로 증가하였습니다.</p>
+  {% endif %}
+  
+  <p>
+    <button onclick="goBack()">돌아가기</button>
+  </p>
+
+  <script>
+    function goBack() {
+      const url = "{% url 'games:weapon_workroom' %}";
+      location.replace(url);
+    }
+  </script>
+{% endblock %}

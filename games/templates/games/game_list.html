@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/games/game_list.css' %}">
+{% endblock %}
+
+{% block body %}
+  <h1>게임 목록</h1>
+
+  <ol class="game-list">
+    <li><p><a href="{% url 'games:adventure_home'%}">장고캣의 모험</a></p></li>
+    <li><p><a href="https://draw-it-friends.vercel.app/" target="_blank">그려줘 친구들</a></p></li>
+  </ol>
+{% endblock %}

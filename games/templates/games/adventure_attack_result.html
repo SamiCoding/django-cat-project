@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/games/game_form.css' %}">
+  <link rel="stylesheet" href="{% static 'css/games/game_adventure.css' %}">
+  {% endblock %}
+
+{% block body %}
+  <div class="adventure">
+    <h1>전투 결과</h1>
+    <p>당신은 '{{enemy.name}}'와(과)의 전투에서 {{result}}하였습니다.</p>
+  
+    {% if result == "승리" %}
+    <p>{{reward_coin}}코인을 획득하셨습니다.</p>
+    
+    <p>
+      <img src="{% static 'images/cat_adventure_win.png' %}" alt="cat_adventure_win">
+    </p>
+    {% else %}
+      <p>
+        <img src="{% static 'images/cat_adventure_lose.png' %}" alt="cat_adventure_lose">
+      </p>
+    {% endif %}
+    <p>
+      <button onclick="goAdventure()">모험 떠나기</button>
+    </p>
+    <p>
+      <button onclick="goBack()">돌아가기</button>
+    </p>
+  </div>
+
+  <script>
+    function goAdventure() {
+      const adventure_url = "{% url 'games:adventure_attack' %}";
+      location.replace(adventure_url);
+    }
+    
+    function goBack() {
+      const url = "{% url 'games:adventure_home' %}";
+      location.replace(url);
+    }
+  </script>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/games/game_form.css' %}">
+  <link rel="stylesheet" href="{% static 'css/games/game_adventure.css' %}">
+{% endblock %}
+
+{% block body %}
+  <div class="adventure">
+    <h1>
+      <div>
+        {{character.nickname}}님,
+      </div>
+      <div>
+        모험을 떠나보세요!
+      </div>
+    </h1>
+
+    <p>당신은 <<{{weapon_name}}>> 무기를 갖고 있습니다.</p>
+    <p><<{{weapon_name}}>>의 공격력은 {{weapon_power}}입니다.</p>
+
+    <p>
+      <img src="{% static 'images/cat_adventure_home.png' %}" alt="cat_adventure_home">
+    </p>
+
+    <p>
+      <button onclick="goAdventure()">모험 떠나기</button>
+    </p>
+    <p>
+      <button onclick="goWorkroom()">무기 공방</button>
+    </p>
+    <p>
+      <button onclick="goBack()">게임 목록으로</button>
+    </p>
+  </div>
+
+  <script>
+    function goAdventure() {
+      const adventure_url = "{% url 'games:adventure_attack' %}";
+      location.href = adventure_url;
+    }
+
+    function goWorkroom() {
+      const workroom_url = "{% url 'games:weapon_workroom' %}";
+      location.href = workroom_url;
+    }
+
+    function goBack() {
+      const url = "{% url 'games:game_list' %}";
+      location.replace(url);
+    }
+  </script>
+{% endblock %}
