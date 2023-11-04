@@ -1,10 +1,42 @@
-img {
-  width: 50%;
-  border-radius: 10px;
+.posting__profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 80%;
+  margin: 50px auto 0;
+  border: 2px solid MediumTurquoise;
+  border-radius: 5px;
+  background-color: PaleTurquoise;
+}
+
+.posting__profile__img {
+  width: 30%;
+  margin: 10px;
+  border: 5px solid pink;
+  border-radius: 15px;
+}
+
+.posting__profile__info {
+  margin-left: 10px;
+}
+
+.posting__profile__info__text {
+  margin: 10px 0;
 }
 
 @media (max-width: 767px), (max-height: 412px) {
-  img {
-    width: 15rem;
+  .posting__profile {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 90%;
+  }
+
+  .posting__profile__img {
+    margin-left: 20px;
+  }
+
+  .posting__profile__info {
+    margin-left: 20px;
   }
 }
