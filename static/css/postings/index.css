@@ -1,3 +1,7 @@
+.posting__list__text {
+  margin: 5px 0;
+}
+
 .posting__profile {
   display: flex;
   flex-direction: row;
@@ -33,10 +37,12 @@
   }
 
   .posting__profile__img {
-    margin-left: 20px;
+    min-width: 50px;
+    margin-top: 15px;
+    margin-left: 15px;
   }
 
   .posting__profile__info {
-    margin-left: 20px;
+    margin-left: 15px;
   }
 }
