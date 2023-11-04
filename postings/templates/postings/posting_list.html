@@ -11,6 +11,10 @@
 
   <div class="posting">
     <div class="posting__function--top">
+      {% if request.user.is_staff %}
+        <a class="button" href="{% url 'postings:posting_admin_create' %}">연습용 데이터 생성(관리자)</a>
+        <a class="button" href="{% url 'postings:posting_admin_delete' %}">연습용 데이터 삭제(관리자)</a>
+      {% endif %}
       <a class="button" href="{% url 'postings:posting_create' %}">글쓰기</a>
     </div>
   
