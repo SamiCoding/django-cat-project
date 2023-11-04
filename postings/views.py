@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Posting, Comment
 from .forms import PostingForm, CommentForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.views.decorators.http import require_POST
 from django.core.paginator import Paginator
+from accounts.models import User
 
 def index(request):
     return render(request, 'postings/index.html')
@@ -152,3 +154,22 @@ def comment_delete(request, posting_id, comment_id):
     if comment.author == request.user:
         comment.delete()
     return redirect('postings:posting_detail', posting_id)
+
+@login_required
+@staff_member_required
+def posting_admin_create(request):
+    posting_index = Posting.objects.all().count() + 1
+    for i in range(10):
+        Posting.objects.create(
+            title = f'연습용 데이터({posting_index})입니다.',
+            content = f'{i}번 글입니다.',
+            author = request.user
+        )
+        posting_index += 1
+    return redirect('postings:posting_list')
+
+@login_required
+@staff_member_required
+def posting_admin_delete(request):
+    Posting.objects.filter(author__is_staff=True, title__contains='연습용').delete()
+    return redirect('postings:posting_list')
