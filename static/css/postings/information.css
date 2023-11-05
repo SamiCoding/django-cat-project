@@ -98,6 +98,10 @@
   color: DarkGray;
 }
 
+.education_info {
+  color: DimGray;
+}
+
 .awards {
   display: flex;
   flex-direction: row;
