@@ -17,9 +17,11 @@
   <div class="posting__profile">
     <img class="posting__profile__img" src="{% static 'images/rabbit.png' %}" alt="rabbit">
     <div class="posting__profile__info">
-      <div class="posting__profile__info__text">😊 Name: 김규리</div>
+      <div class="posting__profile__info__title">About Me</div>
+      <div class="posting__profile__info__text">🍊 Name: 김규리</div>
       <div class="posting__profile__info__text">📧 Email: samicoding@gmail.com</div>
       <div class="posting__profile__info__text">🐈‍⬛ Github: <a href="https://github.com/SamiCoding" target="_blank">깃허브 방문하기</a></div>
+      <div class="posting__profile__info__text">❓더 많은 정보를 원하시나요? <a href="{% url 'postings:information' %}">여기</a>를 눌러보세요.</div>
     </div>
   </div>
 

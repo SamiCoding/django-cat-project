@@ -10,6 +10,9 @@ from accounts.models import User
 def index(request):
     return render(request, 'postings/index.html')
 
+def information(request):
+    return render(request, 'postings/information.html')
+
 def posting_list(request):
     postings = Posting.objects.order_by('date').reverse()
     postings_num = postings.count()

@@ -24,8 +24,13 @@
   margin-left: 10px;
 }
 
+.posting__profile__info__title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
 .posting__profile__info__text {
-  margin: 10px 0;
+  margin-bottom: 5px;
 }
 
 @media (max-width: 767px), (max-height: 412px) {
