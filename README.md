@@ -84,7 +84,4 @@ $ python manage.py runserver
 $ python manage.py createsuperuser
 ```
 
-## 프로젝트 빌드 (PythonAnywhere.com)
-```bash
-
-```
+## 프로젝트 배포 (PythonAnywhere.com)
